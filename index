@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UC1606 – Gerir e monitorizar redes sociais</title>
+<style>
+/* Tudo está dentro de .curso para não colidir com o tema do Moodle */
+.curso{
+  --tinta:#6b1a45; --papel:#ffffff; --neblina:#fdeef4; --linha:#f0cddc;
+  --verde:#c2185b; --ambar:#f48fb1; --texto:#3d2332;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  color:var(--texto); background:var(--papel); line-height:1.55;
+  max-width:980px; margin:0 auto; border:1px solid var(--linha); border-radius:10px; overflow:visible;
+}
+.curso *{box-sizing:border-box}
+.curso-topo{position:relative; overflow:hidden; background:linear-gradient(135deg,#6b1a45,#a3235f); color:#fff; padding:40px 28px 34px; min-height:170px; border-radius:10px 10px 0 0}
+.curso-topo h1,.curso-topo p{position:relative; z-index:1; max-width:60%}
+.slides{position:absolute; inset:0; pointer-events:none}
+.slide{position:absolute; inset:0; background-repeat:no-repeat; background-position:right center; background-size:auto 100%; opacity:0; transition:opacity 1.2s ease}
+.slide.ativo{opacity:.9}
+.slide.s1{background-image:url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20640%20200%27%3E%20%3Cg%20stroke=%27%23fff%27%20stroke-opacity=%27.3%27%20stroke-width=%272%27%20fill=%27none%27%3E%3Cpath%20d=%27M520%20105%20L430%2055%20M520%20105%20L600%2050%20M520%20105%20L590%20160%20M520%20105%20L470%20155%20M520%20105%20L380%20110%20M430%2055%20L380%20110%20M470%20155%20L380%20110%27/%3E%3C/g%3E%20%3Cg%20fill=%27%23fff%27%20fill-opacity=%27.16%27%3E%3Crect%20x=%27170%27%20y=%2740%27%20width=%27120%27%20height=%2764%27%20rx=%2716%27/%3E%3Cpath%20d=%27M200%20100%20L196%20126%20L226%20104Z%27/%3E%3Crect%20x=%27230%27%20y=%27128%27%20width=%2796%27%20height=%2746%27%20rx=%2714%27/%3E%3C/g%3E%20%3Cpath%20d=%27M240%2084%20C220%2070%20214%2058%20222%2050%20C228%2044%20237%2046%20240%2054%20C243%2046%20252%2044%20258%2050%20C266%2058%20260%2070%20240%2084Z%27%20fill=%27%23fbd5e5%27/%3E%20%3Cg%20fill=%27%23fff%27%20fill-opacity=%27.95%27%3E%3Ccircle%20cx=%27520%27%20cy=%27105%27%20r=%2728%27/%3E%3Ccircle%20cx=%27430%27%20cy=%2755%27%20r=%2721%27/%3E%3Ccircle%20cx=%27600%27%20cy=%2750%27%20r=%2721%27/%3E%3Ccircle%20cx=%27590%27%20cy=%27160%27%20r=%2721%27/%3E%3Ccircle%20cx=%27470%27%20cy=%27155%27%20r=%2721%27/%3E%3Ccircle%20cx=%27380%27%20cy=%27110%27%20r=%2721%27/%3E%3C/g%3E%20%3Crect%20x=%27506%27%20y=%2791%27%20width=%2728%27%20height=%2728%27%20rx=%278%27%20fill=%27none%27%20stroke=%27%23a3235f%27%20stroke-width=%273%27/%3E%3Ccircle%20cx=%27520%27%20cy=%27105%27%20r=%276.5%27%20fill=%27none%27%20stroke=%27%23a3235f%27%20stroke-width=%273%27/%3E%3Ccircle%20cx=%27529%27%20cy=%2796%27%20r=%272%27%20fill=%27%23a3235f%27/%3E%20%3Cg%20font-family=%27Arial,Helvetica,sans-serif%27%20font-weight=%27bold%27%20fill=%27%23a3235f%27%20text-anchor=%27middle%27%3E%3Ctext%20x=%27432%27%20y=%2767%27%20font-size=%2732%27%3Ef%3C/text%3E%3Ctext%20x=%27600%27%20y=%2758%27%20font-size=%2720%27%3Ein%3C/text%3E%3Ctext%20x=%27380%27%20y=%27118%27%20font-size=%2722%27%3EX%3C/text%3E%3C/g%3E%20%3Crect%20x=%27577%27%20y=%27151%27%20width=%2726%27%20height=%2718%27%20rx=%275%27%20fill=%27%23a3235f%27/%3E%3Cpath%20d=%27M586%20155%20L586%20165%20L596%20160Z%27%20fill=%27%23fff%27/%3E%20%3Cpath%20d=%27M474%20144%20V160%20A5.5%205.5%200%201%201%20468.5%20154.5%20M474%20144%20C474.5%20149%20478%20151.5%20482%20151.5%27%20fill=%27none%27%20stroke=%27%23a3235f%27%20stroke-width=%273%27%20stroke-linecap=%27round%27/%3E%20%3Cg%20fill=%27%23fff%27%20fill-opacity=%27.35%27%3E%3Ccircle%20cx=%27350%27%20cy=%2740%27%20r=%274%27/%3E%3Ccircle%20cx=%27625%27%20cy=%27120%27%20r=%273%27/%3E%3Ccircle%20cx=%27130%27%20cy=%27150%27%20r=%275%27/%3E%3Ccircle%20cx=%27110%27%20cy=%2760%27%20r=%273%27/%3E%3C/g%3E%20%3C/svg%3E")}
+.slide.s2{background-image:url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20640%20200%27%3E%20%3Crect%20x=%27330%27%20y=%2724%27%20width=%27280%27%20height=%27152%27%20rx=%2718%27%20fill=%27%23fff%27%20fill-opacity=%27.14%27/%3E%20%3Cg%20fill=%27%23fff%27%20fill-opacity=%27.35%27%3E%3Crect%20x=%27345%27%20y=%27120%27%20width=%2722%27%20height=%2736%27%20rx=%274%27/%3E%3Crect%20x=%27379%27%20y=%27102%27%20width=%2722%27%20height=%2754%27%20rx=%274%27/%3E%3Crect%20x=%27413%27%20y=%27110%27%20width=%2722%27%20height=%2746%27%20rx=%274%27/%3E%3Crect%20x=%27447%27%20y=%2784%27%20width=%2722%27%20height=%2772%27%20rx=%274%27/%3E%3C/g%3E%20%3Crect%20x=%27481%27%20y=%2760%27%20width=%2722%27%20height=%2796%27%20rx=%274%27%20fill=%27%23fbd5e5%27%20fill-opacity=%27.95%27/%3E%20%3Cpolyline%20points=%27356,100%20390,84%20424,92%20458,64%20492,40%27%20fill=%27none%27%20stroke=%27%23fff%27%20stroke-width=%273%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27/%3E%20%3Cg%20fill=%27%23fff%27%3E%3Ccircle%20cx=%27356%27%20cy=%27100%27%20r=%274.5%27/%3E%3Ccircle%20cx=%27390%27%20cy=%2784%27%20r=%274.5%27/%3E%3Ccircle%20cx=%27424%27%20cy=%2792%27%20r=%274.5%27/%3E%3Ccircle%20cx=%27458%27%20cy=%2764%27%20r=%274.5%27/%3E%3Ccircle%20cx=%27492%27%20cy=%2740%27%20r=%274.5%27/%3E%3C/g%3E%20%3Ccircle%20cx=%27562%27%20cy=%2772%27%20r=%2724%27%20fill=%27none%27%20stroke=%27%23fff%27%20stroke-opacity=%27.3%27%20stroke-width=%2711%27/%3E%20%3Ccircle%20cx=%27562%27%20cy=%2772%27%20r=%2724%27%20fill=%27none%27%20stroke=%27%23f48fb1%27%20stroke-width=%2711%27%20stroke-dasharray=%2798%2053%27%20transform=%27rotate%28-90%20562%2072%29%27/%3E%20%3Cg%20fill=%27%23fff%27%20fill-opacity=%27.4%27%3E%3Crect%20x=%27536%27%20y=%27116%27%20width=%2756%27%20height=%276%27%20rx=%273%27/%3E%3Crect%20x=%27536%27%20y=%27130%27%20width=%2736%27%20height=%276%27%20rx=%273%27/%3E%3Crect%20x=%27536%27%20y=%27144%27%20width=%2746%27%20height=%276%27%20rx=%273%27/%3E%3C/g%3E%20%3Cg%20fill=%27%23fff%27%20fill-opacity=%27.16%27%3E%3Crect%20x=%27180%27%20y=%2746%27%20width=%27120%27%20height=%2748%27%20rx=%2714%27/%3E%3Crect%20x=%27200%27%20y=%27110%27%20width=%27100%27%20height=%2748%27%20rx=%2714%27/%3E%3C/g%3E%20%3Cpath%20d=%27M0%208%20C-14%20-2%20-18%20-10%20-12%20-15%20C-8%20-19%20-2%20-17%200%20-11%20C2%20-17%208%20-19%2012%20-15%20C18%20-10%2014%20-2%200%208Z%27%20transform=%27translate%28208%2070%29%27%20fill=%27%23fbd5e5%27/%3E%20%3Cg%20fill=%27%23fbd5e5%27%20fill-opacity=%27.85%27%3E%3Crect%20x=%27232%27%20y=%2762%27%20width=%2754%27%20height=%276%27%20rx=%273%27/%3E%3Crect%20x=%27232%27%20y=%2774%27%20width=%2734%27%20height=%276%27%20rx=%273%27/%3E%3Crect%20x=%27222%27%20y=%27126%27%20width=%2762%27%20height=%276%27%20rx=%273%27/%3E%3Crect%20x=%27222%27%20y=%27138%27%20width=%2740%27%20height=%276%27%20rx=%273%27/%3E%3C/g%3E%20%3Cg%20fill=%27%23fff%27%20fill-opacity=%27.35%27%3E%3Ccircle%20cx=%27640%27%20cy=%2720%27%20r=%273%27/%3E%3Ccircle%20cx=%27150%27%20cy=%27170%27%20r=%275%27/%3E%3Ccircle%20cx=%27120%27%20cy=%2750%27%20r=%273%27/%3E%3C/g%3E%20%3C/svg%3E")}
+.slide.s3{background-image:url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20640%20200%27%3E%20%3Crect%20x=%27300%27%20y=%2722%27%20width=%27300%27%20height=%27156%27%20rx=%2718%27%20fill=%27%23fff%27%20fill-opacity=%27.14%27/%3E%20%3Crect%20x=%27300%27%20y=%2722%27%20width=%27300%27%20height=%2732%27%20rx=%2718%27%20fill=%27%23fff%27%20fill-opacity=%27.22%27/%3E%20%3Cg%20fill=%27%23fff%27%20fill-opacity=%27.8%27%3E%3Ccircle%20cx=%27330%27%20cy=%2738%27%20r=%275%27/%3E%3Ccircle%20cx=%27350%27%20cy=%2738%27%20r=%275%27/%3E%3Crect%20x=%27480%27%20y=%2734%27%20width=%2796%27%20height=%278%27%20rx=%274%27/%3E%3C/g%3E%20%3Crect%20x=%27312%27%20y=%2768%27%20width=%2748%27%20height=%2728%27%20rx=%277%27%20fill=%27%23fff%27%20fill-opacity=%27.18%27/%3E%3Crect%20x=%27368%27%20y=%2768%27%20width=%2748%27%20height=%2728%27%20rx=%277%27%20fill=%27%23fbd5e5%27%20fill-opacity=%27.9%27/%3E%3Ccircle%20cx=%27392%27%20cy=%2782%27%20r=%274.5%27%20fill=%27%23a3235f%27/%3E%3Crect%20x=%27424%27%20y=%2768%27%20width=%2748%27%20height=%2728%27%20rx=%277%27%20fill=%27%23fff%27%20fill-opacity=%27.18%27/%3E%3Crect%20x=%27480%27%20y=%2768%27%20width=%2748%27%20height=%2728%27%20rx=%277%27%20fill=%27%23fbd5e5%27%20fill-opacity=%27.9%27/%3E%3Ccircle%20cx=%27504%27%20cy=%2782%27%20r=%274.5%27%20fill=%27%23a3235f%27/%3E%3Crect%20x=%27536%27%20y=%2768%27%20width=%2748%27%20height=%2728%27%20rx=%277%27%20fill=%27%23fff%27%20fill-opacity=%27.18%27/%3E%3Crect%20x=%27312%27%20y=%27104%27%20width=%2748%27%20height=%2728%27%20rx=%277%27%20fill=%27%23fbd5e5%27%20fill-opacity=%27.9%27/%3E%3Ccircle%20cx=%27336%27%20cy=%27118%27%20r=%274.5%27%20fill=%27%23a3235f%27/%3E%3Crect%20x=%27368%27%20y=%27104%27%20width=%2748%27%20height=%2728%27%20rx=%277%27%20fill=%27%23fff%27%20fill-opacity=%27.18%27/%3E%3Crect%20x=%27424%27%20y=%27104%27%20width=%2748%27%20height=%2728%27%20rx=%277%27%20fill=%27%23fbd5e5%27%20fill-opacity=%27.9%27/%3E%3Ccircle%20cx=%27448%27%20cy=%27118%27%20r=%274.5%27%20fill=%27%23a3235f%27/%3E%3Crect%20x=%27480%27%20y=%27104%27%20width=%2748%27%20height=%2728%27%20rx=%277%27%20fill=%27%23fff%27%20fill-opacity=%27.18%27/%3E%3Crect%20x=%27536%27%20y=%27104%27%20width=%2748%27%20height=%2728%27%20rx=%277%27%20fill=%27%23fbd5e5%27%20fill-opacity=%27.9%27/%3E%3Ccircle%20cx=%27560%27%20cy=%27118%27%20r=%274.5%27%20fill=%27%23a3235f%27/%3E%3Crect%20x=%27312%27%20y=%27140%27%20width=%2748%27%20height=%2728%27%20rx=%277%27%20fill=%27%23fff%27%20fill-opacity=%27.18%27/%3E%3Crect%20x=%27368%27%20y=%27140%27%20width=%2748%27%20height=%2728%27%20rx=%277%27%20fill=%27%23fbd5e5%27%20fill-opacity=%27.9%27/%3E%3Ccircle%20cx=%27392%27%20cy=%27154%27%20r=%274.5%27%20fill=%27%23a3235f%27/%3E%3Crect%20x=%27424%27%20y=%27140%27%20width=%2748%27%20height=%2728%27%20rx=%277%27%20fill=%27%23fff%27%20fill-opacity=%27.18%27/%3E%3Crect%20x=%27480%27%20y=%27140%27%20width=%2748%27%20height=%2728%27%20rx=%277%27%20fill=%27%23fbd5e5%27%20fill-opacity=%27.9%27/%3E%3Ccircle%20cx=%27504%27%20cy=%27154%27%20r=%274.5%27%20fill=%27%23a3235f%27/%3E%3Crect%20x=%27536%27%20y=%27140%27%20width=%2748%27%20height=%2728%27%20rx=%277%27%20fill=%27%23fff%27%20fill-opacity=%27.18%27/%3E%20%3Ccircle%20cx=%27225%27%20cy=%27100%27%20r=%2744%27%20fill=%27%23fff%27%20fill-opacity=%27.14%27%20stroke=%27%23fff%27%20stroke-opacity=%27.55%27%20stroke-width=%275%27/%3E%20%3Cpath%20d=%27M225%2070%20V100%20L246%20112%27%20fill=%27none%27%20stroke=%27%23fbd5e5%27%20stroke-width=%275%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27/%3E%20%3Ccircle%20cx=%27225%27%20cy=%27100%27%20r=%275%27%20fill=%27%23fbd5e5%27/%3E%20%3Cg%20fill=%27%23fff%27%20fill-opacity=%27.35%27%3E%3Ccircle%20cx=%27150%27%20cy=%2750%27%20r=%274%27/%3E%3Ccircle%20cx=%27155%27%20cy=%27160%27%20r=%273%27/%3E%3Ccircle%20cx=%27630%27%20cy=%27100%27%20r=%273%27/%3E%3C/g%3E%20%3C/svg%3E")}
+.slide.s4{background-image:url("data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20640%20200%27%3E%20%3Crect%20x=%27490%27%20y=%2714%27%20width=%2796%27%20height=%27172%27%20rx=%2718%27%20fill=%27%23fff%27%20fill-opacity=%27.16%27%20stroke=%27%23fff%27%20stroke-opacity=%27.45%27%20stroke-width=%273%27/%3E%20%3Crect%20x=%27526%27%20y=%2722%27%20width=%2724%27%20height=%275%27%20rx=%272.5%27%20fill=%27%23fff%27%20fill-opacity=%27.5%27/%3E%20%3Ccircle%20cx=%27512%27%20cy=%2752%27%20r=%2710%27%20fill=%27%23fbd5e5%27/%3E%3Cg%20fill=%27%23fff%27%20fill-opacity=%27.45%27%3E%3Crect%20x=%27528%27%20y=%2746%27%20width=%2744%27%20height=%276%27%20rx=%273%27/%3E%3Crect%20x=%27528%27%20y=%2757%27%20width=%2728%27%20height=%275%27%20rx=%272.5%27/%3E%3C/g%3E%20%3Crect%20x=%27502%27%20y=%2776%27%20width=%2772%27%20height=%2756%27%20rx=%2710%27%20fill=%27%23fff%27%20fill-opacity=%27.25%27/%3E%20%3Cpath%20d=%27M0%208%20C-14%20-2%20-18%20-10%20-12%20-15%20C-8%20-19%20-2%20-17%200%20-11%20C2%20-17%208%20-19%2012%20-15%20C18%20-10%2014%20-2%200%208Z%27%20transform=%27translate%28538%20108%29%20scale%281.5%29%27%20fill=%27%23f48fb1%27/%3E%20%3Cg%20fill=%27%23fff%27%20fill-opacity=%27.4%27%3E%3Crect%20x=%27502%27%20y=%27144%27%20width=%2760%27%20height=%276%27%20rx=%273%27/%3E%3Crect%20x=%27502%27%20y=%27157%27%20width=%2740%27%20height=%276%27%20rx=%273%27/%3E%3C/g%3E%20%3Cg%20stroke=%27%23fff%27%20stroke-opacity=%27.3%27%20stroke-width=%272%27%3E%3Cpath%20d=%27M440%2060%20L490%2080%20M430%20140%20L490%20120%20M610%2070%20L586%2090%20M612%20140%20L586%20124%27/%3E%3C/g%3E%20%3Cg%20fill=%27%23fff%27%20fill-opacity=%27.95%27%3E%3Ccircle%20cx=%27432%27%20cy=%2758%27%20r=%2722%27/%3E%3Ccircle%20cx=%27422%27%20cy=%27142%27%20r=%2722%27/%3E%3Ccircle%20cx=%27616%27%20cy=%2766%27%20r=%2722%27/%3E%3Ccircle%20cx=%27618%27%20cy=%27146%27%20r=%2722%27/%3E%3C/g%3E%20%3Cpath%20d=%27M0%208%20C-14%20-2%20-18%20-10%20-12%20-15%20C-8%20-19%20-2%20-17%200%20-11%20C2%20-17%208%20-19%2012%20-15%20C18%20-10%2014%20-2%200%208Z%27%20transform=%27translate%28432%2060%29%20scale%281.15%29%27%20fill=%27%23a3235f%27/%3E%20%3Cg%20fill=%27%23a3235f%27%3E%3Ccircle%20cx=%27410%27%20cy=%27142%27%20r=%273.5%27/%3E%3Ccircle%20cx=%27422%27%20cy=%27142%27%20r=%273.5%27/%3E%3Ccircle%20cx=%27434%27%20cy=%27142%27%20r=%273.5%27/%3E%3C/g%3E%20%3Cpath%20d=%27M600%2070%20V64%20Q600%2058%20606%2058%20H620%20M615%2052%20L623%2058%20L615%2064%27%20transform=%27translate%280%200%29%27%20fill=%27none%27%20stroke=%27%23a3235f%27%20stroke-width=%273%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27/%3E%20%3Cpath%20d=%27M608%20150%20L628%20140%20L618%20160%20L615%20150Z%27%20fill=%27%23a3235f%27/%3E%20%3Cg%20fill=%27%23fff%27%20fill-opacity=%27.16%27%3E%3Crect%20x=%27180%27%20y=%2740%27%20width=%27130%27%20height=%2760%27%20rx=%2716%27/%3E%3Cpath%20d=%27M215%2096%20L210%20122%20L242%20100Z%27/%3E%3Crect%20x=%27240%27%20y=%27118%27%20width=%27110%27%20height=%2750%27%20rx=%2714%27/%3E%3C/g%3E%20%3Cg%20fill=%27%23fbd5e5%27%20fill-opacity=%27.85%27%3E%3Crect%20x=%27200%27%20y=%2758%27%20width=%2786%27%20height=%277%27%20rx=%273.5%27/%3E%3Crect%20x=%27200%27%20y=%2773%27%20width=%2756%27%20height=%277%27%20rx=%273.5%27/%3E%3Crect%20x=%27258%27%20y=%27134%27%20width=%2770%27%20height=%277%27%20rx=%273.5%27/%3E%3Crect%20x=%27258%27%20y=%27148%27%20width=%2744%27%20height=%277%27%20rx=%273.5%27/%3E%3C/g%3E%20%3Cg%20fill=%27%23fff%27%20fill-opacity=%27.35%27%3E%3Ccircle%20cx=%27375%27%20cy=%2736%27%20r=%274%27/%3E%3Ccircle%20cx=%27140%27%20cy=%27160%27%20r=%275%27/%3E%3Ccircle%20cx=%27120%27%20cy=%2760%27%20r=%273%27/%3E%3C/g%3E%20%3C/svg%3E")}
+.pontos{position:absolute; right:14px; bottom:10px; z-index:2; display:flex; gap:8px}
+.pontos button{width:12px; height:12px; padding:0; border:0; border-radius:50%; background:rgba(255,255,255,.4); cursor:pointer}
+.pontos button[aria-current="true"]{background:#fff}
+.pontos button:focus-visible{outline:3px solid var(--ambar); outline-offset:2px}
+.curso:not(.js) .pontos{display:none}
+@media (prefers-reduced-motion:reduce){.slide{transition:none}}
+@media (max-width:640px){.curso-topo{padding:28px 16px 26px}.slide.ativo{opacity:.45}.curso-topo h1,.curso-topo p{max-width:100%}}
+.curso-topo h1{margin:0 0 4px; font-size:1.65rem; line-height:1.2; color:#fff}
+.curso-topo p{margin:0; color:#f8cfe0; font-size:.95rem}
+
+/* Barra de menus */
+.menu{display:flex; flex-wrap:wrap; background:var(--neblina); border-bottom:1px solid var(--linha); padding:0 12px}
+.menu-item{position:relative}
+.menu-botao{
+  appearance:none; border:0; background:none; cursor:pointer; font:inherit; font-weight:600;
+  color:var(--tinta); padding:14px 16px; display:flex; align-items:center; gap:8px;
+  border-bottom:3px solid transparent;
+}
+.menu-botao:hover{background:#fadbe8}
+.menu-botao:focus-visible,.menu-lista a:focus-visible{outline:3px solid var(--ambar); outline-offset:-3px}
+.menu-botao::after{content:""; width:7px; height:7px; border-right:2px solid currentColor; border-bottom:2px solid currentColor;
+  transform:rotate(45deg) translateY(-2px); transition:transform .18s}
+.menu-botao[aria-expanded="true"]{border-bottom-color:var(--verde); color:var(--verde)}
+.menu-botao[aria-expanded="true"]::after{transform:rotate(225deg) translateY(-2px)}
+
+.menu-lista{
+  display:none; position:absolute; top:100%; left:0; z-index:20; min-width:260px; margin:0; padding:6px 0;
+  list-style:none; background:var(--papel); border:1px solid var(--linha); border-radius:0 0 8px 8px;
+  box-shadow:0 8px 24px rgba(107,26,69,.16);
+}
+.menu-botao[aria-expanded="true"] + .menu-lista{display:block}
+.menu-lista a{display:block; padding:10px 18px; color:var(--texto); text-decoration:none; font-size:.95rem}
+.menu-lista a:hover{background:var(--neblina); color:var(--verde)}
+.menu-lista a small{display:block; color:#8f5a74; font-size:.8rem}
+
+/* Conteúdo */
+.painel{padding:26px 28px 32px}
+.painel h2{margin:0 0 6px; font-size:1.3rem; color:var(--tinta)}
+.painel .intro{margin:0 0 20px; color:#7d4a63}
+.bloco{border:1px solid var(--linha); border-radius:8px; margin-bottom:10px; background:var(--papel)}
+.bloco summary{cursor:pointer; padding:13px 16px; font-weight:600; color:var(--tinta); list-style:none; display:flex; justify-content:space-between; gap:12px}
+.bloco summary::-webkit-details-marker{display:none}
+.bloco summary::after{content:"+"; font-size:1.2rem; color:var(--verde); line-height:1}
+.bloco[open] summary::after{content:"–"}
+.bloco[open] summary{border-bottom:1px solid var(--linha); background:var(--neblina)}
+.bloco summary:focus-visible{outline:3px solid var(--ambar); outline-offset:-3px}
+.bloco .corpo{padding:14px 16px}
+.bloco .corpo ul{margin:0; padding-left:1.1rem}
+.bloco .corpo li{margin:4px 0}
+.bloco a{color:var(--verde)}
+.criterios{width:100%; border-collapse:collapse; font-size:.95rem}
+.criterios th,.criterios td{padding:8px 10px; border-bottom:1px solid var(--linha); text-align:left}
+.criterios th{color:var(--tinta); background:var(--neblina)}
+.criterios td:last-child,.criterios th:last-child{text-align:right; white-space:nowrap; font-weight:600}
+.criterios tbody tr:last-child td{background:var(--neblina); color:var(--tinta)}
+.etiqueta{display:inline-block; font-size:.78rem; font-weight:600; padding:2px 9px; border-radius:99px; background:var(--neblina); color:var(--tinta); margin-left:6px; white-space:nowrap}
+.etiqueta.prazo{background:#fbd5e5}
+.etiqueta.feito{background:#f4b8d1; color:#6b1a45}
+
+/* Com JavaScript só se vê o painel escolhido; sem JavaScript vêem-se todos */
+.curso.js .painel{display:none}
+.curso.js .painel.ativo{display:block}
+
+@media (max-width:640px){
+  .menu{padding:0}
+  .menu-item{flex:1 1 50%}
+  .menu-botao{width:100%; justify-content:space-between}
+  .menu-lista{left:0; right:0; min-width:0}
+  .painel{padding:20px 16px 26px}
+}
+@media (prefers-reduced-motion:reduce){.menu-botao::after{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="curso" id="curso">
+  <header class="curso-topo">
+    <div class="slides" aria-hidden="true">
+      <div class="slide s1 ativo"></div><div class="slide s2"></div><div class="slide s3"></div><div class="slide s4"></div>
+    </div>
+    <div class="pontos" role="group" aria-label="Imagens do cabeçalho">
+      <button type="button" aria-label="Imagem 1" aria-current="true"></button>
+      <button type="button" aria-label="Imagem 2"></button>
+      <button type="button" aria-label="Imagem 3"></button>
+      <button type="button" aria-label="Imagem 4"></button>
+    </div>
+    <h1>Gerir e monitorizar redes sociais</h1>
+    <p>UC1606 · Duração: 50 horas · Formadora: Vera Paulo</p>
+  </header>
+
+  <nav class="menu" aria-label="Menu do curso">
+    <div class="menu-item">
+      <button class="menu-botao" aria-expanded="false" aria-haspopup="true">📋 Planificação</button>
+      <ul class="menu-lista">
+        <li><a href="#planificacao" data-alvo="planificacao">🔭 Visão geral<small>Objetivos e competências</small></a></li>
+        <li><a href="#planificacao" data-alvo="planificacao" data-abrir="p-calendario">🗓️ Conteúdos programáticos<small>Módulos da UC</small></a></li>
+        <li><a href="#planificacao" data-alvo="planificacao" data-abrir="p-avaliacao">⭐ Critérios de avaliação</a></li>
+      </ul>
+    </div>
+    <div class="menu-item">
+      <button class="menu-botao" aria-expanded="false" aria-haspopup="true">📚 Recursos didáticos</button>
+      <ul class="menu-lista">
+        <li><a href="#recursos" data-alvo="recursos" data-abrir="r-apresentacoes">🖥️ Apresentações</a></li>
+        <li><a href="#recursos" data-alvo="recursos" data-abrir="r-video">🔗 Ferramentas e links</a></li>
+      </ul>
+    </div>
+    <div class="menu-item">
+      <button class="menu-botao" aria-expanded="false" aria-haspopup="true">📝 Tarefas</button>
+      <ul class="menu-lista">
+        <li><a href="#tarefas" data-alvo="tarefas" data-abrir="t-entregues">✅ Entregues</a></li>
+        <li><a href="#tarefas" data-alvo="tarefas" data-abrir="t-quizzes">❓ Questionários</a></li>
+      </ul>
+    </div>
+    <div class="menu-item">
+      <button class="menu-botao" aria-expanded="false" aria-haspopup="true">🗓️ Sessões</button>
+      <ul class="menu-lista">
+        <li><a href="#sessoes" data-alvo="sessoes" data-abrir="s-proxima">📅 Próximas sessões</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PLANIFICAÇÃO -->
+  <section class="painel ativo" id="planificacao">
+    <h2>Planificação</h2>
+    <p class="intro">Da escolha das plataformas à monitorização dos resultados nas redes sociais.</p>
+    <details class="bloco" open>
+      <summary>Visão geral</summary>
+      <div class="corpo"><ul>
+        <li>Criar e configurar perfis em redes sociais para representar uma marca ou organização.</li>
+        <li>Desenvolver conteúdo para publicação nas redes sociais.</li>
+        <li>Interagir com a audiência através de comentários, mensagens e partilhas.</li>
+        <li>Analisar métricas e estatísticas para avaliar o desempenho das estratégias de redes sociais.</li>
+      </ul>
+      <p><a href="https://catalogo.snq.gov.pt/ucDetalhe/356631" target="_blank" rel="noopener noreferrer">Saber mais</a></p></div>
+    </details>
+    <details class="bloco" id="p-calendario">
+      <summary>Conteúdos programáticos</summary>
+      <div class="corpo"><ul>
+        <li><strong>Módulo 1:</strong> diagnóstico, público-alvo e escolha de plataformas</li>
+        <li><strong>Módulo 2:</strong> objetivos, estratégia e calendário editorial</li>
+        <li><strong>Módulo 3:</strong> criação, publicação e gestão da comunidade</li>
+        <li><strong>Módulo 4:</strong> monitorização, métricas e relatório final</li>
+      </ul></div>
+    </details>
+    <details class="bloco" id="p-avaliacao">
+      <summary>Critérios de avaliação</summary>
+      <div class="corpo">
+        <table class="criterios">
+          <thead><tr><th>Parâmetro</th><th>Peso</th></tr></thead>
+          <tbody>
+          <tr><td>Assiduidade e Pontualidade</td><td>10%</td></tr>
+          <tr><td>Participação e Motivação</td><td>10%</td></tr>
+          <tr><td>Relações Interpessoais</td><td>10%</td></tr>
+          <tr><td>Trabalho em equipa</td><td>5%</td></tr>
+          <tr><td>Sentido de Responsabilidade (Interesse + empenho)</td><td>5%</td></tr>
+          <tr><td>Autonomia</td><td>5%</td></tr>
+          <tr><td>Mobilização de Conhecimentos</td><td>5%</td></tr>
+          <tr><td>Resultados de aprendizagem</td><td>50%</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </section>
+
+  <!-- RECURSOS DIDÁTICOS -->
+  <section class="painel" id="recursos">
+    <h2>Recursos didáticos</h2>
+    <p class="intro">Materiais de apoio para gerires e monitorizares redes sociais.</p>
+    <details class="bloco" id="r-apresentacoes" open>
+      <summary>Apresentações</summary>
+      <div class="corpo"><ul>
+        <li><a href="#">Plataformas e públicos: Instagram, Facebook, LinkedIn e TikTok (PDF)</a></li>
+        <li><a href="#">Estratégia e calendário editorial (PDF)</a></li>
+        <li><a href="#">Criação de conteúdos e copywriting (PDF)</a></li>
+        <li><a href="#">Métricas e KPIs das redes sociais (PDF)</a></li>
+      </ul></div>
+    </details>
+    <details class="bloco" id="r-video">
+      <summary>Ferramentas e links</summary>
+      <div class="corpo"><ul>
+        <li><a href="#">Como planear conteúdos para redes sociais (vídeo)</a></li>
+        <li><a href="#">Meta Business Suite – guia de introdução</a></li>
+        <li><a href="#">Canva – modelos para publicações</a></li>
+      </ul></div>
+    </details>
+  </section>
+
+  <!-- TAREFAS -->
+  <section class="painel" id="tarefas">
+    <h2>Tarefas</h2>
+    <p class="intro">Cada tarefa corresponde a uma fase da gestão das redes sociais.</p>
+    <details class="bloco" id="t-entregues" open>
+      <summary>Entregues</summary>
+      <div class="corpo"><ul>
+        <li><a href="#">Exemplo 1</a> <span class="etiqueta feito">entregue</span></li>
+        <li><a href="#">Exemplo 2</a> <span class="etiqueta feito">entregue</span></li>
+      </ul></div>
+    </details>
+    <details class="bloco" id="t-quizzes">
+      <summary>Questionários</summary>
+      <div class="corpo"><ul>
+        <li><a href="#">Exemplo 1</a></li>
+        <li><a href="#">Exemplo 2</a> <span class="etiqueta prazo">até 5 dez</span></li>
+      </ul></div>
+    </details>
+  </section>
+
+  <!-- SESSÕES -->
+  <section class="painel" id="sessoes">
+    <h2>Sessões</h2>
+    <p class="intro">Horários, ligações às sessões e gravações.</p>
+    <details class="bloco" id="s-proxima" open>
+      <summary>Próximas sessões</summary>
+      <div class="corpo">
+        <ul>
+          <li><strong>25/11/2026</strong> (quarta-feira) <span class="etiqueta prazo">em breve</span></li>
+          <li><strong>3/12/2026</strong> (quinta-feira)</li>
+          <li><strong>16/12/2026</strong> (terça-feira)</li>
+        </ul>
+        <p><a href="#">Entrar na sessão online</a></p>
+      </div>
+    </details>
+    <details class="bloco" id="s-gravacoes">
+      <summary>Gravações</summary>
+      <div class="corpo"><ul>
+        <li><a href="#">Gravação – 18 nov</a></li>
+        <li><a href="#">Gravação – 11 nov</a></li>
+      </ul></div>
+    </details>
+  </section>
+</div>
+
+<script>
+(function () {
+  var curso = document.getElementById('curso');
+  if (!curso) return;
+  curso.classList.add('js');
+
+  var botoes = curso.querySelectorAll('.menu-botao');
+  var paineis = curso.querySelectorAll('.painel');
+
+  function fecharMenus(exceto) {
+    botoes.forEach(function (b) { if (b !== exceto) b.setAttribute('aria-expanded', 'false'); });
+  }
+
+  function mostrarPainel(id, abrirBloco) {
+    paineis.forEach(function (p) { p.classList.toggle('ativo', p.id === id); });
+    if (abrirBloco) {
+      var bloco = document.getElementById(abrirBloco);
+      if (bloco) {
+        bloco.closest('.painel').querySelectorAll('details').forEach(function (d) { d.open = false; });
+        bloco.open = true;
+        bloco.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+  }
+
+  botoes.forEach(function (b) {
+    b.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var aberto = b.getAttribute('aria-expanded') === 'true';
+      fecharMenus(b);
+      b.setAttribute('aria-expanded', aberto ? 'false' : 'true');
+    });
+  });
+
+  curso.querySelectorAll('.menu-lista a').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      mostrarPainel(a.dataset.alvo, a.dataset.abrir);
+      fecharMenus(null);
+    });
+  });
+
+  document.addEventListener('click', function () { fecharMenus(null); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      var aberto = curso.querySelector('.menu-botao[aria-expanded="true"]');
+      fecharMenus(null);
+      if (aberto) aberto.focus();
+    }
+  });
+
+  /* Carrossel do cabeçalho: muda de imagem a cada 60 segundos */
+  var slides = curso.querySelectorAll('.slide');
+  var pontos = curso.querySelectorAll('.pontos button');
+  var atual = 0, relogio;
+  function irPara(i) {
+    slides[atual].classList.remove('ativo');
+    pontos[atual].removeAttribute('aria-current');
+    atual = (i + slides.length) % slides.length;
+    slides[atual].classList.add('ativo');
+    pontos[atual].setAttribute('aria-current', 'true');
+  }
+  function iniciar() {
+    clearInterval(relogio);
+    relogio = setInterval(function () { irPara(atual + 1); }, 60000);
+  }
+  pontos.forEach(function (b, i) {
+    b.addEventListener('click', function () { irPara(i); iniciar(); });
+  });
+  iniciar();
+})();
+</script>
+</body>
+</html>
